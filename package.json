@@ -1,4 +1,12 @@
 {
+  "name": "your-app-name",
+  "version": "1.0.0",
+  "description": "",
+  "main": "express.js",
+  "scripts": {
+    "start": "node config/express.js",
+    "dev": "nodemon config/express.js"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
