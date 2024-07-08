@@ -95,15 +95,20 @@ async function getInvoice(req, res) {
 
   try {
     const { invoiceNumber } = req.params;
-    const invoice = await invoicesCollection.findOne({
-      invoiceNumber: parseInt(invoiceNumber),
+    const invoices = await invoicesCollection.find().toArray();
+
+    let dataa = {};
+
+    let invoice = null;
+    const cursor = invoicesCollection.find();
+
+    await cursor.forEach((doc) => {
+      if (doc.invoiceNumber === invoiceNumber) {
+        invoice = doc;
+        res.json(invoice);
+      }
     });
-    if (!invoice) {
-      return res
-        .status(404)
-        .json({ error: "Invoice not found", invoiceNumber });
-    }
-    res.json(invoice);
+    res.json("invoice not found");
   } catch (error) {
     console.error("Error fetching invoice:", error);
     res.status(500).json({ error: "Failed to fetch invoice" });
