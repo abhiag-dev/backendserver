@@ -156,22 +156,7 @@ async function getLastItemsRates(req, res) {
     res.status(500).json({ error: "Internal Server Error" });
   }
 }
-const deleteInvoiceByNumber = async (req, res) => {
-  const { invoiceNumber } = req.params; // Extract invoice number from request params
 
-  try {
-    const deletedInvoice = await Invoice.findOneAndDelete({ invoiceNumber });
-
-    if (!deletedInvoice) {
-      return res.status(404).json({ error: "Invoice not found." });
-    }
-
-    res.status(200).json({ message: "Invoice deleted successfully." });
-  } catch (err) {
-    console.error("Error deleting invoice:", err);
-    res.status(500).json({ error: "Failed to delete invoice." });
-  }
-};
 
 module.exports = {
   addInvoice,
@@ -181,5 +166,4 @@ module.exports = {
   getLastInvoiceNumber,
   getInvoice,
   getLastItemsRates,
-  deleteInvoiceByNumber, // Add deleteInvoice to exports
 };
