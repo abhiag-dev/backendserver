@@ -13,6 +13,5 @@ router.get(
   "/:CustomerName/last-items-rates",
   invoiceController.getLastItemsRates
 );
-router.delete("/:invoiceNumber", invoiceController.deleteInvoiceByNumber);
 
 module.exports = router;
