@@ -66,12 +66,12 @@ async function editInvoice(req, res) {
     const updates = req.body;
 
     const result = await invoicesCollection.findOneAndUpdate(
-      { _id: id },
+      { invoiceNumber: id },
       { $set: updates },
       { returnOriginal: false }
     );
-
-    res.json(result.value);
+    
+    await res.json(result);
   } catch (error) {
     console.error("Error updating invoice:", error);
     res.status(500).json({ error: "Failed to update invoice" });
