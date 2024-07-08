@@ -108,9 +108,6 @@ async function getInvoice(req, res) {
         res.json(invoice);
       }
     });
-    if (!invoice) {
-      res.json("invoice not found");
-    }
   } catch (error) {
     console.error("Error fetching invoice:", error);
     res.status(500).json({ error: "Failed to fetch invoice" });
