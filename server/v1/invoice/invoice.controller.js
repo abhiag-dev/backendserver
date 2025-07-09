@@ -96,7 +96,7 @@ async function getInvoice(req, res) {
   try {
     const { invoiceNumber } = req.params;
     const invoice = await invoicesCollection.findOne({
-      invoiceNumber: parseInt(invoiceNumber),
+      invoiceNumber: invoiceNumber,
     });
     if (!invoice) {
       return res
